@@ -112,6 +112,3 @@ else:
 
 st.markdown("---")
 st.markdown("© 2026 - Sistem Pendukung Keputusan untuk Kelompok Tani Sujahtera Farmers")
-
-st.markdown("---")
-st.markdown("© 2026 - Sistem Pendukung Keputusan untuk Kelompok Tani Sujahtera Farmers")
