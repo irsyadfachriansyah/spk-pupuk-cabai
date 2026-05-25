@@ -85,6 +85,21 @@ if btn:
         st.bar_chart(pd.DataFrame([r['Skor'] for r in rank], index=[r['Pupuk'] for r in rank]), color="#22C55E")
 
     st.subheader("Transparansi Perhitungan")
+    
+    # TAMBAHAN: Tabel Normalisasi untuk Bab 4
+    st.write("Tabel Normalisasi (Matriks Keputusan Ternormalisasi):")
+    data_tabel_bab4 = []
+    for d in det:
+        data_tabel_bab4.append({
+            "Nama Pupuk": d['Nama'],
+            "C1 (Biaya)": d['R'][0],
+            "C2 (Nitrogen)": d['R'][1],
+            "C3 (Fosfor)": d['R'][2],
+            "C4 (Kalium)": d['R'][3],
+            "Skor Akhir": d['Skor']
+        })
+    st.table(pd.DataFrame(data_tabel_bab4))
+
     for d in det:
         with st.expander(f"Detail Perhitungan: {d['Nama']}"):
             st.latex(rf"\text{{{d['Nama']}}} : ({d['R'][0]:.2f} \times {bobot[0]}) + ({d['R'][1]:.2f} \times {bobot[1]}) + ({d['R'][2]:.2f} \times {bobot[2]}) + ({d['R'][3]:.2f} \times {bobot[3]}) = {d['Skor']}")
@@ -94,6 +109,9 @@ if btn:
     st.table(df_sop)
 else:
     st.info("Selamat Datang! Masukkan Luas Lahan di sidebar kiri, lalu klik **Hitung Analisis Organik**.")
+
+st.markdown("---")
+st.markdown("© 2026 - Sistem Pendukung Keputusan untuk Kelompok Tani Sujahtera Farmers")
 
 st.markdown("---")
 st.markdown("© 2026 - Sistem Pendukung Keputusan untuk Kelompok Tani Sujahtera Farmers")
